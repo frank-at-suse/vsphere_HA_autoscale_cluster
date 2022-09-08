@@ -1,0 +1,23 @@
+#cloud-config
+write_files:
+
+- content: |
+    ip_vs
+    ip_vs_rr
+    ip_vs_wrr
+    ip_vs_sh
+    nf_conntrack_ipv4
+  path: /etc/modules-load.d/ipvs.conf # Load IPVS kernel modules for kube-proxy & kube-vip
+  
+runcmd:
+  - systemctl restart systemd-modules-load
+
+# Create Additional Users Here
+users:
+  - name: ${ssh_user}
+    gecos: Interactive Maintenance User Account
+    groups: [sudo]
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ${ssh_public_key}
