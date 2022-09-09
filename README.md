@@ -47,7 +47,7 @@ The `cluster_autoscaler.tf` plan includes the following values in `ExtraArgs:`
 >    skip-nodes-with-local-storage: false
 >    skip-nodes-with-system-pods: false
 >```
->Those exist here to make the autoscaler logic more easily demonstrable and should be **_used with  caution_** in production or any other environment you care about, as they could incur data loss or workload instability.
+Those exist here to make the autoscaler logic more easily demonstrable and should be **_used with  caution_** in production or any other environment you care about, as they could incur data loss or workload instability.
 
 ---
 
