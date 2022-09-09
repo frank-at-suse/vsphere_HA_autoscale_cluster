@@ -9,8 +9,8 @@ kubevip = {
 
 # These are machine specs for nodes.  Be mindful of System Requirements/Limitations!
 node = {
-  ctl_plane = { hdd_capacity = 30720, quantity = 3, vcpu = 2, vm_network = "VLAN_60", vram = 4096 }
-  worker    = { hdd_capacity = 40960, quantity = 3, vcpu = 2, vm_network = "VLAN_70", vram = 4096 }
+  ctl_plane = { hdd_capacity = 30720, name = "ctl-plane", quantity = 3, vcpu = 2, vm_network = "VLAN_60", vram = 4096 }
+  worker    = { hdd_capacity = 40960, name = "worker", quantity = 3, vcpu = 2, vm_network = "VLAN_70", vram = 4096 }
 }
 
 rancher_env = {

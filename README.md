@@ -47,7 +47,7 @@ Those exist here to make the autoscaler logic more easily demonstrable and shoul
 
 ---
 
-The `lifecycle` block in `cluster.tf` is currently fragile:
+The `lifecycle` block in `cluster.tf` is somewhat fragile:
 >```
 >lifecycle {
 >    ignore_changes = [
@@ -56,7 +56,10 @@ The `lifecycle` block in `cluster.tf` is currently fragile:
 >  }
 >```
 
-Counting from a [0] value, Terraform processes indices lexicographically - the "worker" pool is `machine_pools[1]` and "ctl_plane" pool is `machine_pools[0]` for no other reason than "worker" comes after "ctl_plane" from a dictionary perspective.  Due to this, if the "ctl_plane" pool is renamed to something like "x_ctl_plane", the incorrect machine pool will occupy the `machine_pools[1]` index, causing undesired behavior.  Variable validation will be added...at some point...maybe.
+Counting from a [0] value, Terraform processes indices lexicographically - the "worker" pool is `machine_pools[1]` and "ctl_plane" pool is `machine_pools[0]` for no other reason than "worker" comes after "ctl_plane" from a dictionary perspective.  Due to this, if the "ctl_plane" pool were to be renamed something like "x_ctl_plane", the incorrect machine pool would occupy the `machine_pools[1]` index, causing undesired behavior.  To prevent this, basic variable validation is in place that forces MachinePool names to begin with `ctl-plane` and `worker` otherwise the below error will be thrown:
+
+>`Err: MachinePool names must begin with 'ctl-plane' for Control Plane Node Pool & 'worker' for Autoscaling Worker Node
+Pool.`
 
 ## To Run
     > terraform apply

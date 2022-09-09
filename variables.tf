@@ -11,10 +11,18 @@ variable "kubevip" {
 }
 
 variable "node" {
-  type = object({
-    ctl_plane = map(any)
-    worker    = map(any)
+    description = "Properties for MachinePool node types"
+    type = object({
+      ctl_plane = map(any)
+      worker    = map(any)
   })
+
+    validation {
+    condition     = alltrue([
+      for x in var.node : can(regex("^ctl-plane*|^worker*", x.name ))
+    ])
+    error_message = "Err: MachinePool node names must begin with `ctl-plane' for Control Plane Node Pool & 'worker' for Autoscaling Worker Node Pool."
+  }
 }
 
 variable "rancher_env" {

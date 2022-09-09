@@ -4,7 +4,7 @@ resource "random_pet" "cluster_name" {
 
 resource "rancher2_machine_config_v2" "nodes" {
   for_each      = var.node
-  generate_name = replace(each.key, "_", "-")
+  generate_name = replace(each.value.name, "_", "-")
 
   vsphere_config {
     cfgparam   = ["disk.enableUUID=TRUE"]
@@ -57,7 +57,7 @@ resource "rancher2_cluster_v2" "rke2" {
         cloud_credential_secret_name = data.rancher2_cloud_credential.auth.id
         control_plane_role           = machine_pools.key == "ctl_plane" ? true : false
         etcd_role                    = machine_pools.key == "ctl_plane" ? true : false
-        name                         = replace(machine_pools.key, "_", "-")
+        name                         = machine_pools.value.name
         quantity                     = machine_pools.value.quantity
         worker_role                  = machine_pools.key != "ctl_plane" ? true : false
 
