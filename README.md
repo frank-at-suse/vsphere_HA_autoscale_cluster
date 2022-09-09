@@ -3,8 +3,12 @@
 ![Rancher](https://img.shields.io/badge/rancher-%230075A8.svg?style=for-the-badge&logo=rancher&logoColor=white) ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) 	![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
 
 ## Reason for Being
+<<<<<<< HEAD
 
 This Terraform plan is for creating a multi-node RKE2 cluster in vSphere with machine pool autoscaling via [upstream K8s Cluster Autoscaler](https://github.com/kubernetes/autoscaler) & API Server HA via a [kube-vip](https://kube-vip.io/) DaemonSet manifest - bringing our cluster some "cloud-provider-like" behavior in the comfort of our own datacenter.
+=======
+This Terraform plan is for creating a multi-node RKE2 cluster in vSphere with machine pool autoscaling via [upstream K8s Cluster Autoscaler](https://github.com/kubernetes/autoscaler) & API Server HA via a [kube-vip](https://kube-vip.io/) DaemonSet manifest - both of these are common asks and bring our cluster some "cloud-provider-like" behaviors in the comfort of our own datacenter.
+>>>>>>> b1c8c10df151bbdeed0186fd5e41645ad039435d
 
 ## Environment Prerequisites
 
@@ -60,6 +64,9 @@ Counting from a [0] value, Terraform processes indices lexicographically - the "
 
 ## To Run
     > terraform apply
+    
+Node pool min/max values are annotations that can be adjusted with the `rancher_env.autoscale_annotations` variable.  Changing these values on a live cluster will not trigger a redeploy.  Any nodes in the autoscaled pool selected for scale down and/or deletion will have a Taint applied that is visible in the Rancher UI:
+> ![autoscaler](https://user-images.githubusercontent.com/88675306/189248687-4b949567-ebd0-460e-a42e-d13dc1706410.png)
 
 ## Tested Versions
 
