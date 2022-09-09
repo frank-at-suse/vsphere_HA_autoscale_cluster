@@ -42,7 +42,7 @@ Those exist here to make the autoscaler logic more easily demonstrable and shoul
 ## To Run
     > terraform apply
     
-Node pool min/max values are annotations that can be adjusted with the `rancher_env.autoscale_annotations` variable.  Changing these values on a live cluster will not trigger a redeploy.  Any nodes in the autoscale pool selected for scale down and/or deletion will have a Taint applied that is visible in the Rancher UI:
+Node pool min/max values are annotations that can be adjusted with the `rancher_env.autoscale_annotations` variable.  Changing these values on a live cluster will not trigger a redeploy.  Any nodes in the autoscaled pool selected for scale down and/or deletion will have a Taint applied that is visible in the Rancher UI:
 > ![autoscaler](https://user-images.githubusercontent.com/88675306/189248687-4b949567-ebd0-460e-a42e-d13dc1706410.png)
 
 ## Tested Versions
