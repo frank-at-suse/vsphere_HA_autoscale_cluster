@@ -1,5 +1,5 @@
 variable "kubevip" {
-  description = "IP pool for kube-vip API Load Balancer"
+  description = "Properties for kube-vip API Load Balancer DaemonSet"
   type = object({
     api_vip      = string
     local_as     = number
