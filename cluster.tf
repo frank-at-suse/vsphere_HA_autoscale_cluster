@@ -75,7 +75,7 @@ resource "rancher2_cluster_v2" "rke2" {
 
   lifecycle {
     ignore_changes = [
-      rke_config[0].machine_pools[1].quantity # Instruct Terraform to ignore changes to the quantity of "worker" pool nodes, as autoscaler will cause this value to drift beteen state refreshes
+      rke_config[0].machine_pools[1].quantity # Instruct Terraform to ignore changes to the quantity of "worker" pool nodes, as autoscaler will cause this value to drift between state refreshes
     ]
   } # End of lifecycle
 }   # End of rancher2_cluster_v2
