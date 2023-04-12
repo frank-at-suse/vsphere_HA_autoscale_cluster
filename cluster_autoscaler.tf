@@ -1,6 +1,6 @@
 resource "rancher2_app_v2" "cluster_autoscaler" {
   chart_name    = "cluster-autoscaler"
-  chart_version = "9.21.0"
+  chart_version = "9.28.0"
   cluster_id    = rancher2_cluster_v2.rke2.cluster_v1_id
   name          = "cluster-autoscaler"
   namespace     = "cattle-system"
@@ -18,7 +18,7 @@ resource "rancher2_app_v2" "cluster_autoscaler" {
         name: ${rancher2_secret_v2.cluster_autoscaler_cloud_config.name}
         mountPath: /etc/rancher
     image:
-      repository: k8s.gcr.io/autoscaling/cluster-autoscaler
+      repository: registry.k8s.io/autoscaling/cluster-autoscaler
       tag: v1.25.0
     nodeSelector:
       node-role.kubernetes.io/control-plane: "true"
@@ -43,7 +43,7 @@ resource "rancher2_secret_v2" "cluster_autoscaler_cloud_config" {
   data = {
     "rancher.conf" = <<EOF
         url: ${file("${path.cwd}/files/.rancher-api-url")}
-        token: ${file("${path.cwd}/files/.rancher-bearer-token")}
+        token: ${rancher2_token.cluster_autoscaler.id}
         clusterName: ${rancher2_cluster_v2.rke2.name}
         clusterNamespace: fleet-default # This is the Namespace for the "cluster.provisioning.cattle.io" API resource on "local" cluster
     EOF
