@@ -39,7 +39,8 @@ resource "rancher2_cluster_v2" "rke2" {
         bgp_peer_router  = var.kubevip.peer_router, # IP address for external BGP router
         bgp_remote_as    = var.kubevip.remote_as,   # BGP AS for upstream router
         k8s_api_vip      = var.kubevip.api_vip,     # IP address for advertising K8s API
-        kube_vip_version = var.kubevip.version      # Pin kube-vip version for stability (optional)
+        kube_vip_rbac    = data.http.kube_vip_rbac.response_body,
+        kube_vip_version = jsondecode(data.http.kube_vip_version.response_body)["tag_name"]
     })
 
     machine_global_config = <<EOF
