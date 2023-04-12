@@ -3,7 +3,6 @@ kubevip = {
   local_as     = 64513
   peer_router  = "1.1.1.3"
   remote_as    = 64513
-  version      = "v0.5.0"
   vip_dns_name = "vip.domain.com"
 }
 
@@ -19,7 +18,7 @@ rancher_env = {
   cluster_annotations   = { "foo" = "bar" }
   cluster_labels        = { "something" = "amazing" }
   cni                   = "calico"
-  rke2_version          = "v1.24.4+rke2r1"
+  rke2_version          = "v1.25.7+rke2r1"
 }
 
 vsphere_env = {
