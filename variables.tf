@@ -5,7 +5,6 @@ variable "kubevip" {
     local_as     = number
     peer_router  = string
     remote_as    = number
-    version      = string
     vip_dns_name = string
   })
 }
