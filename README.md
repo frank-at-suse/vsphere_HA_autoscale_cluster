@@ -73,9 +73,9 @@ Node pool min/max values are annotations that can be adjusted with the `rancher_
 | SOFTWARE | VERSION | DOCS |
 | ------ | ------ | ------ |
 | K8s Cluster Autoscaler | 1.25.0 | https://github.com/kubernetes/autoscaler/tree/master/charts/cluster-autoscaler#readme
-| kube-vip | 0.5.0 | https://kube-vip.io/docs/
-| Rancher Server | 2.6.8 | https://rancher.com/docs/rancher/v2.6/en/overview
-| Rancher Terraform Provider| 1.24.1 | https://registry.terraform.io/providers/rancher/rancher2/latest/docs
-| RKE2 | 1.24.4+rke2r1 | https://docs.rke2.io
-| Terraform | 1.2.7 | https://www.terraform.io/docs
-| vSphere | 7.0.3 Build 20150588 | https://docs.vmware.com/en/VMware-vSphere/index.html
+| kube-vip | 0.5.11 | https://kube-vip.io/docs/
+| Rancher Server | 2.7.2 | https://rancher.com/docs/rancher/v2.6/en/overview
+| Rancher Terraform Provider| 2.0.0 | https://registry.terraform.io/providers/rancher/rancher2/latest/docs
+| RKE2 | 1.25.7+rke2r1 | https://docs.rke2.io
+| Terraform | 1.4.4 | https://www.terraform.io/docs
+| vSphere | 7.0.3.01300 | https://docs.vmware.com/en/VMware-vSphere/index.html
