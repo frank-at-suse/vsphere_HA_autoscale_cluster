@@ -19,7 +19,7 @@ resource "rancher2_app_v2" "cluster_autoscaler" {
         mountPath: /etc/rancher
     image:
       repository: registry.k8s.io/autoscaling/cluster-autoscaler
-      tag: v1.25.0
+      tag: v1.26.2
     nodeSelector:
       node-role.kubernetes.io/control-plane: "true"
     tolerations:
