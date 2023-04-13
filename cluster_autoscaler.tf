@@ -43,7 +43,7 @@ resource "rancher2_secret_v2" "cluster_autoscaler_cloud_config" {
   data = {
     "rancher.conf" = <<EOF
         url: ${file("${path.cwd}/files/.rancher-api-url")}
-        token: ${rancher2_token.cluster_autoscaler.id}
+        token: ${rancher2_token.cluster_autoscaler.token}
         clusterName: ${rancher2_cluster_v2.rke2.name}
         clusterNamespace: fleet-default # This is the Namespace for the "cluster.provisioning.cattle.io" API resource on "local" cluster
     EOF
